@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Injuries – Vocabulary &amp; Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#fff8f0; --card:#fff;
+  --orange:#ff7043; --orange-light:#fff3ee; --orange-mid:#ffccbc;
+  --teal:#26a69a; --teal-light:#e0f2f1;
+  --blue:#3d8ef0; --blue-light:#e8f1fd;
+  --yellow:#ffca28; --yellow-light:#fffde7;
+  --green:#43a047; --green-light:#e8f5e9;
+  --red:#e53935; --red-light:#ffebee;
+  --text:#2d2d2d; --muted:#888; --border:#ffe0cc;
+  --shadow:0 4px 20px rgba(255,112,67,.10);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Quicksand',sans-serif;background:var(--bg);color:var(--text);
+  min-height:100vh;padding:28px 14px 60px;
+  background-image:
+    radial-gradient(circle at 5% 10%,rgba(255,112,67,.08) 0%,transparent 38%),
+    radial-gradient(circle at 95% 90%,rgba(38,166,154,.07) 0%,transparent 38%);
+}
+.container{max-width:920px;margin:0 auto;}
+
+/* HEADER */
+.page-header{text-align:center;margin-bottom:32px;animation:fadeDown .55s ease both;}
+.page-header .emoji-band{font-size:2rem;letter-spacing:6px;margin-bottom:6px;}
+.page-header h1{font-family:'Baloo 2',cursive;font-size:2.5rem;color:var(--orange);line-height:1.1;text-shadow:2px 3px 0 rgba(255,112,67,.15);}
+.page-header p{color:var(--muted);font-size:.95rem;font-weight:600;margin-top:4px;}
+
+/* PART WRAPPER */
+.part{margin-bottom:36px;animation:fadeUp .55s ease both;}
+.part-title{font-family:'Baloo 2',cursive;font-size:1.55rem;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.part-badge{background:var(--orange);color:white;border-radius:10px;padding:3px 13px;font-size:1rem;font-family:'Baloo 2',cursive;}
+
+/* ═══ PART 1 – VOCAB ═══ */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(166px,1fr));gap:16px;}
+.vocab-card{
+  background:white;border-radius:20px;border:2px solid var(--border);
+  box-shadow:var(--shadow);overflow:hidden;
+  transition:transform .18s,box-shadow .18s;cursor:default;
+}
+.vocab-card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(255,112,67,.16);}
+.vocab-img-box{
+  width:120px;aspect-ratio:1/1;background:var(--orange-light);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.vocab-img-box img{width:120px;height:100%;object-fit:cover;transition:transform .3s;}
+.vocab-card:hover .vocab-img-box img{transform:scale(1.06);}
+.vocab-img-placeholder{font-size:3.5rem;opacity:.5;}
+.vocab-body{padding:12px 14px 14px;}
+.vocab-num{font-family:'Baloo 2',cursive;font-size:.8rem;color:var(--orange);font-weight:700;margin-bottom:1px;}
+.vocab-word{font-family:'Baloo 2',cursive;font-size:1.15rem;font-weight:800;color:var(--text);line-height:1.2;}
+.vocab-ipa{font-size:.82rem;color:var(--teal);font-weight:600;margin:3px 0 6px;font-style:italic;}
+.vocab-example{
+  font-size:.82rem;color:#555;font-weight:600;line-height:1.6;
+  border-left:3px solid var(--orange-mid);padding-left:8px;margin-bottom:10px;
+}
+/* highlighted keyword in example */
+.vocab-example .kw{
+  font-weight:800;color:var(--orange);
+  background:#fff3ee;border-radius:4px;padding:0 3px;
+  border-bottom:2px solid var(--orange);
+}
+.btn-audio-sm{
+  display:inline-flex;align-items:center;gap:5px;border:none;border-radius:50px;
+  padding:5px 12px;font-family:'Quicksand',sans-serif;font-size:.76rem;font-weight:700;
+  cursor:pointer;transition:transform .12s,box-shadow .12s;
+}
+.btn-audio-sm:hover{transform:scale(1.07);}
+.btn-audio-sm.playing{animation:pulseO .6s infinite alternate;}
+.btn-word-audio{background:var(--orange-light);color:var(--orange);box-shadow:0 2px 6px rgba(255,112,67,.15);}
+.btn-ex-audio{background:var(--teal-light);color:var(--teal);box-shadow:0 2px 6px rgba(38,166,154,.12);margin-left:4px;}
+.audio-row{display:flex;flex-wrap:wrap;gap:4px;}
+
+/* ═══ PART 2 – Q&A ═══ */
+.qa-list{display:flex;flex-direction:column;gap:16px;}
+.qa-card{
+  background:white;border-radius:18px;border:2px solid var(--blue-light);
+  box-shadow:0 4px 16px rgba(61,142,240,.08);overflow:hidden;
+}
+.qa-question{
+  display:flex;align-items:center;gap:10px;padding:14px 18px;
+  background:var(--blue-light);border-bottom:1px solid #d1e6fc;
+}
+.qa-qnum{
+  font-family:'Baloo 2',cursive;font-size:1.05rem;background:var(--blue);color:white;
+  border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.qa-qtext{font-weight:700;font-size:.97rem;flex:1;line-height:1.4;}
+.qa-options{padding:12px 18px;display:flex;flex-direction:column;gap:8px;}
+.qa-option{
+  display:flex;align-items:center;gap:10px;background:var(--bg);border-radius:12px;
+  padding:10px 14px;border:2px solid #e8e8e8;cursor:pointer;
+  transition:border-color .15s,background .15s;
+}
+.qa-option:hover{border-color:var(--blue);background:var(--blue-light);}
+/* answer states */
+.qa-option.correct{background:#e8f5e9 !important;border-color:#43a047 !important;}
+.qa-option.wrong{background:#ffebee !important;border-color:#e53935 !important;}
+.qa-option.correct .opt-label{background:var(--green);}
+.qa-option.wrong   .opt-label{background:var(--red);}
+.qa-option.disabled{pointer-events:none;}
+.result-icon{font-size:1.1rem;margin-left:2px;}
+.opt-label{
+  font-family:'Baloo 2',cursive;font-size:.85rem;background:var(--blue);color:white;
+  border-radius:6px;padding:2px 8px;flex-shrink:0;transition:background .2s;
+}
+.opt-text{font-weight:600;font-size:.92rem;flex:1;}
+.btn-opt-audio{background:var(--blue-light);color:var(--blue);}
+.qa-reset-row{margin-top:8px;display:flex;justify-content:flex-end;}
+.btn-qa-reset{
+  border:none;border-radius:50px;padding:6px 14px;
+  font-family:'Quicksand',sans-serif;font-size:.78rem;font-weight:700;
+  cursor:pointer;background:#f0f0f0;color:#666;transition:background .15s;
+}
+.btn-qa-reset:hover{background:#e0e0e0;}
+
+/* ═══ PART 3 – TALK & STICK ═══ */
+.ts-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:640px){.ts-layout{grid-template-columns:1fr;}}
+
+.ts-story-box{
+  background:white;border-radius:18px;border:2px solid var(--green-light);
+  box-shadow:0 4px 16px rgba(67,160,71,.08);overflow:hidden;
+}
+.ts-story-header{
+  background:linear-gradient(135deg,#43a047,#26a69a);padding:14px 18px;color:white;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.ts-story-header-left{display:flex;align-items:center;gap:10px;}
+.ts-story-header h3{font-family:'Baloo 2',cursive;font-size:1.15rem;}
+
+/* toggle story button */
+.btn-story-toggle{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.22);color:white;border:1.5px solid rgba(255,255,255,.5);
+  border-radius:50px;padding:5px 13px;
+  font-family:'Quicksand',sans-serif;font-size:.8rem;font-weight:700;
+  cursor:pointer;transition:background .15s;flex-shrink:0;
+}
+.btn-story-toggle:hover{background:rgba(255,255,255,.35);}
+
+.ts-story-body{padding:16px 18px;}
+.story-collapse{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.story-collapse.open{max-height:500px;}
+.story-text{font-size:.9rem;font-weight:600;line-height:1.9;color:#334;}
+.story-text .day{color:var(--orange);font-weight:800;}
+.story-text .injury{background:var(--yellow-light);border-radius:5px;padding:0 4px;color:#7a5c00;font-weight:800;border-bottom:2px solid #ffe082;}
+
+.btn-story-play{
+  margin-top:14px;display:inline-flex;align-items:center;gap:7px;
+  background:var(--green-light);color:var(--green);border:none;border-radius:50px;
+  padding:8px 18px;font-family:'Quicksand',sans-serif;font-size:.85rem;font-weight:700;
+  cursor:pointer;transition:transform .15s;
+}
+.btn-story-play:hover{transform:scale(1.05);}
+.btn-story-play.playing{animation:pulseG .6s infinite alternate;}
+
+.ts-days-box{
+  background:white;border-radius:18px;border:2px solid var(--yellow-light);
+  box-shadow:0 4px 16px rgba(255,202,40,.10);overflow:hidden;
+}
+.ts-days-header{background:linear-gradient(135deg,#ffca28,#ff9800);padding:14px 18px;color:white;}
+.ts-days-header h3{font-family:'Baloo 2',cursive;font-size:1.15rem;}
+.ts-days-header p{font-size:.8rem;opacity:.88;font-weight:600;margin-top:2px;}
+.days-grid{padding:14px 16px;display:flex;flex-direction:column;gap:8px;}
+.day-slot{
+  display:flex;align-items:center;gap:10px;background:var(--yellow-light);
+  border-radius:12px;padding:9px 13px;border:1.5px solid #ffe082;
+  transition:border-color .15s,background .15s;
+}
+.day-slot:hover{border-color:#ffca28;background:#fffde7;}
+.day-name{font-family:'Baloo 2',cursive;font-size:.9rem;color:#8a6200;font-weight:800;min-width:70px;}
+.day-drop{
+  flex:1;min-height:34px;border-radius:9px;
+  background:white;border:2px dashed #ffd54f;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.82rem;color:#bbb;font-weight:600;
+  transition:border-color .15s,background .15s;
+}
+.day-drop.drag-over{border-color:var(--orange);background:var(--orange-light);}
+.day-drop.filled{border-style:solid;border-color:#ffca28;color:var(--text);background:#fffde7;font-weight:700;}
+.stickers-pool{padding:0 16px 14px;display:flex;flex-wrap:wrap;gap:8px;}
+.sticker{
+  background:var(--orange);color:white;border-radius:10px;padding:7px 14px;
+  font-size:.82rem;font-weight:700;cursor:grab;user-select:none;border:none;
+  transition:transform .15s,box-shadow .15s;box-shadow:0 3px 10px rgba(255,112,67,.25);
+}
+.sticker:hover{transform:scale(1.07);box-shadow:0 5px 16px rgba(255,112,67,.35);}
+.sticker:active{cursor:grabbing;}
+.sticker.used{opacity:.3;cursor:default;pointer-events:none;}
+.stickers-label{padding:10px 16px 6px;font-size:.82rem;color:var(--muted);font-weight:700;}
+.btn-section-reset{
+  display:inline-flex;align-items:center;gap:6px;border:none;border-radius:50px;
+  padding:7px 16px;font-family:'Quicksand',sans-serif;font-size:.8rem;font-weight:700;
+  cursor:pointer;background:#f5f5f5;color:#888;transition:background .15s;margin-top:8px;
+}
+.btn-section-reset:hover{background:#eee;color:#555;}
+
+/* ANIMATIONS */
+@keyframes fadeDown{from{opacity:0;transform:translateY(-22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp  {from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)}}
+@keyframes pulseO{from{box-shadow:0 0 0 0 rgba(255,112,67,.4)}to{box-shadow:0 0 0 8px rgba(255,112,67,0)}}
+@keyframes pulseG{from{box-shadow:0 0 0 0 rgba(67,160,71,.4)} to{box-shadow:0 0 0 8px rgba(67,160,71,0)}}
+
+@media(max-width:500px){
+  .page-header h1{font-size:1.9rem;}
+  .vocab-grid{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="emoji-band">🩹🤕🩼💊🏥</div>
+  <h1>Injuries</h1>
+  <p>Vocabulary · Q&amp;A · Talk &amp; Stick</p>
+</div>
+
+<!-- ═══ PART 1 ═══ -->
+<div class="part" style="animation-delay:.05s">
+  <div class="part-title">
+    <span class="part-badge">Part 1</span>📚 Vocabulary
+  </div>
+  <div class="vocab-grid" id="vocabGrid"></div>
+</div>
+<!-- 🔹 EXTRA: Explain "fell" -->
+<div style="margin-top:22px">
+
+  <div style="background:#fff;border-radius:18px;border:2px solid #ffe0cc;box-shadow:0 4px 20px rgba(255,112,67,.10);overflow:hidden">
+
+    <!-- header -->
+    <div style="background:#fff3ee;padding:12px 16px;font-family:'Baloo 2',cursive;font-size:1.2rem;color:#ff7043;display:flex;align-items:center;gap:8px">
+      ⚡ Extra: “fell” là gì?
+    </div>
+
+    <!-- body -->
+    <div style="padding:16px">
+
+      <!-- images -->
+      <!-- <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:12px">
+        <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?w=300" style="width:120px;border-radius:10px;object-fit:cover">
+        <img src="https://images.unsplash.com/photo-1584467735871-8c1b7c0b7c1c?w=300" style="width:120px;border-radius:10px;object-fit:cover">
+        <img src="https://images.unsplash.com/photo-1603570419984-1b9c1c9b8b87?w=300" style="width:120px;border-radius:10px;object-fit:cover">
+      </div> -->
+
+      <!-- text -->
+      <div style="font-size:.9rem;line-height:1.7;font-weight:600;color:#444">
+
+        👉 <div style="font-size:.9rem;line-height:1.7;font-weight:600;color:#444">
+
+  <!-- nghĩa -->
+  <div style="display:flex;align-items:center;justify-content:space-between;background:#fff3e0;padding:8px 10px;border-radius:8px;margin-bottom:10px">
+    <span>👉 <b>fell = quá khứ của "fall"</b> (ngã / rơi)</span>
+    <button class="btn-audio-sm"
+      style="background:#ffe0b2;color:#e65100"
+      onclick="playAudio('part4/1.wav',this)">🔊</button>
+  </div>
+
+  <b>Ví dụ:</b>
+
+  <!-- ví dụ 1 -->
+  <div style="display:flex;align-items:center;justify-content:space-between;background:#f9f9f9;padding:8px 10px;border-radius:8px;margin:6px 0">
+    <span>
+      • I <span style="color:#ff7043;font-weight:800">fell</span> off my bike.<br>
+      → Tôi đã bị ngã khỏi xe đạp
+    </span>
+    <button class="btn-audio-sm"
+      style="background:#e0f2f1;color:#00695c"
+      onclick="playAudio('part4/2.wav',this)">🔊</button>
+  </div>
+
+  <!-- ví dụ 2 -->
+  <div style="display:flex;align-items:center;justify-content:space-between;background:#f9f9f9;padding:8px 10px;border-radius:8px;margin:6px 0">
+    <span>
+      • Felipe <span style="color:#ff7043;font-weight:800">fell</span> and has a bruise.<br>
+      → Felipe đã ngã và bị bầm
+    </span>
+    <button class="btn-audio-sm"
+      style="background:#e0f2f1;color:#00695c"
+      onclick="playAudio('part4/3.wav',this)">🔊</button>
+  </div>
+
+  <!-- ghi nhớ -->
+  <div style="margin-top:12px">
+    🔥 <b>Ghi nhớ nhanh:</b>
+  </div>
+
+
+<div style="display:flex;flex-direction:column;gap:8px">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;background:#fff3e0;padding:6px 10px;border-radius:8px">
+    <span><b style="color:#ff7043">fall</b> → hiện tại</span>
+    <button class="btn-audio-sm"
+      style="background:#ffe0b2;color:#e65100"
+      onclick="playAudio('part4/4.wav',this)">🔊</button>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-between;background:#fff3e0;padding:6px 10px;border-radius:8px">
+    <span><b style="color:#ff7043">fell</b> → quá khứ</span>
+    <button class="btn-audio-sm"
+      style="background:#ffe0b2;color:#e65100"
+      onclick="playAudio('part4/5.wav',this)">🔊</button>
+  </div>
+
+  <div style="display:flex;align-items:center;justify-content:space-between;background:#fff3e0;padding:6px 10px;border-radius:8px">
+    <span><b style="color:#ff7043">fallen</b> → hoàn thành</span>
+    <button class="btn-audio-sm"
+      style="background:#ffe0b2;color:#e65100"
+      onclick="playAudio('part4/6.wav',this)">🔊</button>
+  </div>
+
+</div>
+
+        ⚠️ <b>Đừng nhầm:</b><br>
+        fell (ngã) ≠ feel (cảm thấy)
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<!-- ═══ PART 2 ═══ -->
+<div class="part" style="animation-delay:.12s">
+  <div class="part-title">
+    <span class="part-badge" style="background:var(--blue)">Part 2</span>❓ Questions &amp; Answers
+  </div>
+  <div class="qa-list" id="qaList"></div>
+</div>
+</div>
+
+<!-- 🔹 EXTRA: touched -->
+<div style="margin-top:18px">
+  <div style="background:#fff;border-radius:18px;border:2px solid #ffe0cc;box-shadow:0 4px 20px rgba(255,112,67,.10);overflow:hidden">
+
+    <div style="background:#fff3ee;padding:12px 16px;font-family:'Baloo 2',cursive;font-size:1.2rem;color:#ff7043">
+      🔥 “touched” là gì?
+    </div>
+
+    <div style="padding:12px">
+
+      <!-- <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:8px;margin-bottom:10px">
+        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=300" style="width:100%;height:70px;object-fit:cover;border-radius:8px">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=300" style="width:100%;height:70px;object-fit:cover;border-radius:8px">
+      </div> -->
+
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:.9rem;font-weight:600;color:#444">
+
+        <div style="display:flex;justify-content:space-between;align-items:center;background:#fff3e0;padding:6px 10px;border-radius:8px">
+          <span>👉 <b>touched = quá khứ của "touch"</b> (chạm)</span>
+          <button class="btn-audio-sm" style="background:#ffe0b2;color:#e65100"
+            onclick="playAudio('part4/7.wav',this)">🔊</button>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;background:#f9f9f9;padding:6px 10px;border-radius:8px">
+          <span>• He <span style="color:#ff7043;font-weight:800">touched</span> the stove.<br>→ Anh ấy đã chạm vào bếp</span>
+          <button class="btn-audio-sm" style="background:#e0f2f1;color:#00695c"
+            onclick="playAudio('part4/8.wav',this)">🔊</button>
+        </div>
+
+        <div>⚠️ Có thể gây <b>burn</b> (bỏng)</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 🔹 EXTRA: ran -->
+<div style="margin-top:18px">
+  <div style="background:#fff;border-radius:18px;border:2px solid #ffe0cc;box-shadow:0 4px 20px rgba(255,112,67,.10);overflow:hidden">
+
+    <div style="background:#fff3ee;padding:12px 16px;font-family:'Baloo 2',cursive;font-size:1.2rem;color:#ff7043">
+      🏃 “ran” là gì?
+    </div>
+
+    <div style="padding:12px">
+
+      <!-- <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:8px;margin-bottom:10px">
+        <img src="https://images.unsplash.com/photo-1546484959-f1b9c0c9e8c1?w=300" style="width:100%;height:70px;object-fit:cover;border-radius:8px">
+        <img src="https://images.unsplash.com/photo-1517960413843-0aee8e2b3285?w=300" style="width:100%;height:70px;object-fit:cover;border-radius:8px">
+      </div> -->
+
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:.9rem;font-weight:600;color:#444">
+
+        <div style="display:flex;justify-content:space-between;align-items:center;background:#fff3e0;padding:6px 10px;border-radius:8px">
+          <span>👉 <b>ran = quá khứ của "run"</b> (chạy)</span>
+          <button class="btn-audio-sm" style="background:#ffe0b2;color:#e65100"
+            onclick="playAudio('part4/9.wav',this)">🔊</button>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;background:#f9f9f9;padding:6px 10px;border-radius:8px">
+          <span>• I <span style="color:#ff7043;font-weight:800">ran</span> with scissors.<br>→ Tôi đã chạy khi cầm kéo</span>
+          <button class="btn-audio-sm" style="background:#e0f2f1;color:#00695c"
+            onclick="playAudio('part4/10.wav',this)">🔊</button>
+        </div>
+
+        <div>⚠️ <b>Bad idea!</b> → dễ bị <b>cut</b> (đứt tay)</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- 🔹 EXTRA: ate -->
+<div style="margin-top:18px">
+  <div style="background:#fff;border-radius:18px;border:2px solid #ffe0cc;box-shadow:0 4px 20px rgba(255,112,67,.10);overflow:hidden">
+
+    <div style="background:#fff3ee;padding:12px 16px;font-family:'Baloo 2',cursive;font-size:1.2rem;color:#ff7043">
+      🍦 “ate” là gì?
+    </div>
+
+    <div style="padding:12px">
+
+      <!-- <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:8px;margin-bottom:10px">
+        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=300" style="width:100%;height:70px;object-fit:cover;border-radius:8px">
+        <img src="https://images.unsplash.com/photo-1505253716362-afaea6fc7e7b?w=300" style="width:100%;height:70px;object-fit:cover;border-radius:8px">
+      </div> -->
+
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:.9rem;font-weight:600;color:#444">
+
+        <div style="display:flex;justify-content:space-between;align-items:center;background:#fff3e0;padding:6px 10px;border-radius:8px">
+          <span>👉 <b>ate = quá khứ của "eat"</b> (ăn)</span>
+          <button class="btn-audio-sm" style="background:#ffe0b2;color:#e65100"
+            onclick="playAudio('part4/11.wav',this)">🔊</button>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;background:#f9f9f9;padding:6px 10px;border-radius:8px">
+          <span>• I <span style="color:#ff7043;font-weight:800">ate</span> too much ice cream.<br>→ Tôi đã ăn quá nhiều kem</span>
+          <button class="btn-audio-sm" style="background:#e0f2f1;color:#00695c"
+            onclick="playAudio('part4/12.wav',this)">🔊</button>
+        </div>
+
+        <div>⚠️ Có thể bị đau bụng 😄 → <b>Bad idea!</b></div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ═══ PART 3 ═══ -->
+<div class="part" style="animation-delay:.20s">
+  <div class="part-title">
+    <span class="part-badge" style="background:var(--green)">Part 3</span>🗣️ Talk &amp; Stick
+  </div>
+  <div class="ts-layout">
+
+    <!-- Story -->
+    <div class="ts-story-box">
+      <div class="ts-story-header">
+        <div class="ts-story-header-left">
+          <span style="font-size:1.4rem">📖</span>
+          <h3>Read the Story</h3>
+        </div>
+        <button class="btn-story-toggle" id="btnStoryToggle" onclick="toggleStory()">
+          👁️ Show
+        </button>
+      </div>
+      <div class="ts-story-body">
+        <div class="story-collapse" id="storyCollapse">
+          <div class="story-text">
+            Last week, my family had a terrible time.<br>
+            On <span class="day">Monday</span>, my little brother got a <span class="injury">cut</span> on his finger.<br>
+            Then on <span class="day">Tuesday</span>, my sister fell off her bike. She has an ugly <span class="injury">bruise</span> on her leg.<br>
+            On <span class="day">Wednesday</span> afternoon, mom got a big <span class="injury">scratch</span> on her hand from the cat.<br>
+            Then on <span class="day">Thursday</span>, my dad touched the stove. You should see his <span class="injury">burn</span>.<br>
+            But <span class="day">Friday</span> was the worst. I fell off my bike and now I have a <span class="injury">broken leg</span>.
+          </div>
+          <button class="btn-story-play" id="btnStory" onclick="playStory()">
+            🔊 Play Story
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stick -->
+    <div class="ts-days-box">
+      <div class="ts-days-header">
+        <h3>📅 Stick the Injury!</h3>
+        <p>Drag each injury to the correct day</p>
+      </div>
+      <div class="stickers-label">🩹 Injuries to stick:</div>
+      <div class="stickers-pool" id="stickersPool"></div>
+      <div class="days-grid" id="daysGrid"></div>
+      <div style="padding:0 16px 14px;display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn-section-reset" onclick="resetStick()">↺ Reset</button>
+        <button class="btn-section-reset" style="background:var(--green-light);color:var(--green)" onclick="checkStick()">✔ Check</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div><!-- /container -->
+
+<script>
+/* ══════════ DATA ══════════ */
+
+// helper: wrap keyword in example sentence with <span class="kw">
+function hlEx(sentence, keyword) {
+  // case-insensitive replace first occurrence
+  const re = new RegExp('(' + keyword.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'i');
+  return sentence.replace(re, '<span class="kw">$1</span>');
+}
+
+const vocab = [
+  { num:1, word:"A burn",       ipa:"/ə bɜːrn/",          img:"part1/1.jpg", wordAudio:"part1/1.wav", exAudio:"part1/2.wav",
+    exRaw:"How did Andrea get a burn on her finger?",     keyword:"a burn" },
+  { num:2, word:"A broken leg", ipa:"/ə ˈbroʊkən lɛɡ/",  img:"part1/2.jpg", wordAudio:"part1/3.wav", exAudio:"part1/4.wav",
+    exRaw:"Lucia has a broken leg.",                      keyword:"a broken leg" },
+  { num:3, word:"A scratch",    ipa:"/ə skrætʃ/",         img:"part1/3.jpg", wordAudio:"part1/5.wav", exAudio:"part1/6.wav",
+    exRaw:"Look at this scratch. I fell off my bike.",    keyword:"scratch" },
+  { num:4, word:"A bruise",     ipa:"/ə bruːz/",          img:"part1/4.jpg", wordAudio:"part1/7.wav", exAudio:"part1/8.wav",
+    exRaw:"Felipe fell and has a bruise on his leg.",     keyword:"a bruise" },
+  { num:5, word:"A cut",        ipa:"/ə kʌt/",            img:"part1/5.jpg", wordAudio:"part1/9.wav", exAudio:"part1/10.wav",
+    exRaw:"Maria has a cut on her finger.",               keyword:"a cut" },
+];
+
+const qa = [
+  { q:"Why is your leg in a cast?", qAudio:"part2/1.wav",
+    opts:[
+      {label:"a", text:"I have a broken leg.", audio:"part2/2.wav", correct:true },
+      {label:"b", text:"I have a bruise.",     audio:"part2/3.wav", correct:false},
+    ]},
+  { q:"Is that a burn?", qAudio:"part2/4.wav",
+    opts:[
+      {label:"a", text:"Yes. I have a headache.",    audio:"part2/5.wav", correct:false},
+      {label:"b", text:"Yes, I touched the stove!",  audio:"part2/6.wav", correct:true },
+    ]},
+  { q:"I have a scratch. What should I do?", qAudio:"part2/7.wav",
+    opts:[
+      {label:"a", text:"You should put a bandage on it.", audio:"part2/8.wav",  correct:true },
+      {label:"b", text:"You should go to the dentist.",   audio:"part2/9.wav",  correct:false},
+    ]},
+  { q:"What an ugly bruise. What happened to her?", qAudio:"part2/10.wav",
+    opts:[
+      {label:"a", text:"She had a bike accident.",    audio:"part2/11.wav", correct:true },
+      {label:"b", text:"She ate too much chocolate.", audio:"part2/12.wav", correct:false},
+    ]},
+  { q:"How did you get that cut?", qAudio:"part2/13.wav",
+    opts:[
+      {label:"a", text:"I ran with scissors. Bad idea!",      audio:"part2/14.wav", correct:true },
+      {label:"b", text:"I ate too much ice cream. Bad idea!", audio:"part2/15.wav", correct:false},
+    ]},
+];
+
+const stickDays = [
+  {day:"Monday",    injury:"a cut",        audio:"part3/2.wav"},
+  {day:"Tuesday",   injury:"a bruise",     audio:"part3/3.wav"},
+  {day:"Wednesday", injury:"a scratch",    audio:"part3/4.wav"},
+  {day:"Thursday",  injury:"a burn",       audio:"part3/5.wav"},
+  {day:"Friday",    injury:"a broken leg", audio:"part3/6.wav"},
+];
+
+/* ══════════ AUDIO ══════════ */
+let curAudio = null, curBtn = null;
+function playAudio(file, btn) {
+  if (curAudio) {
+    curAudio.pause(); curAudio.currentTime = 0;
+    if (curBtn) curBtn.classList.remove('playing');
+    if (curBtn === btn) { curAudio = null; curBtn = null; return; }
+  }
+  const a = new Audio(file);
+  curAudio = a; curBtn = btn;
+  if (btn) btn.classList.add('playing');
+  a.play().catch(() => {
+    if (btn) btn.classList.remove('playing');
+    alert('⚠️ Không tìm thấy file: ' + file);
+  });
+  a.onended = () => { if (btn) btn.classList.remove('playing'); curAudio = null; curBtn = null; };
+}
+
+/* ══════════ PART 1 – VOCAB ══════════ */
+function buildVocab() {
+  const grid = document.getElementById('vocabGrid');
+  vocab.forEach(v => {
+    const exHtml = hlEx(v.exRaw, v.keyword);
+    const card = document.createElement('div');
+    card.className = 'vocab-card';
+    card.innerHTML = `
+      <div class="vocab-img-box">
+        <img src="${v.img}" alt="${v.word}"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="vocab-img-placeholder" style="display:none">🩹</div>
+      </div>
+      <div class="vocab-body">
+        <div class="vocab-num">No.${v.num}</div>
+        <div class="vocab-word">${v.word}</div>
+        <div class="vocab-ipa">${v.ipa}</div>
+        <div class="vocab-example">${exHtml}</div>
+        <div class="audio-row">
+          <button class="btn-audio-sm btn-word-audio" onclick="playAudio('${v.wordAudio}',this)">🔊 Word</button>
+          <button class="btn-audio-sm btn-ex-audio"   onclick="playAudio('${v.exAudio}',this)">🔊 Example</button>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+    
+  });
+  
+}
+
+/* ══════════ PART 2 – Q&A ══════════ */
+function buildQA() {
+  const list = document.getElementById('qaList');
+  qa.forEach((q, qi) => {
+    const card = document.createElement('div');
+    card.className = 'qa-card';
+    card.dataset.answered = "false";
+
+    const optsHtml = q.opts.map((o, oi) => `
+      <div class="qa-option" id="opt-${qi}-${oi}"
+        onclick="checkAnswer(${qi},${oi},${o.correct})">
+        <span class="opt-label">${o.label}</span>
+        <span class="opt-text">${o.text}</span>
+        <span class="result-icon" id="ri-${qi}-${oi}"></span>
+        <button class="btn-audio-sm btn-opt-audio"
+          onclick="event.stopPropagation();playAudio('${o.audio}',this)">🔊</button>
+      </div>`).join('');
+
+    card.innerHTML = `
+      <div class="qa-question">
+        <span class="qa-qnum">${qi+1}</span>
+        <span class="qa-qtext">${q.q}</span>
+        <button class="btn-audio-sm btn-word-audio"
+          onclick="playAudio('${q.qAudio}',this)">🔊</button>
+      </div>
+      <div class="qa-options" id="qaopts-${qi}">${optsHtml}</div>
+      <div class="qa-reset-row">
+        <button class="btn-qa-reset" onclick="resetOneQA(${qi})">↺ Thử lại</button>
+      </div>`;
+    list.appendChild(card);
+  });
+  
+}
+
+function checkAnswer(qi, oi, isCorrect) {
+  const card = document.querySelector(`#qaopts-${qi}`).closest('.qa-card');
+  if (card.dataset.answered === "true") return;
+  card.dataset.answered = "true";
+
+  // lock all options
+  const allOpts = document.querySelectorAll(`#qaopts-${qi} .qa-option`);
+  allOpts.forEach((el, idx) => {
+    el.classList.add('disabled');
+    const correct = qa[qi].opts[idx].correct;
+    if (correct) {
+      el.classList.add('correct');
+      document.getElementById(`ri-${qi}-${idx}`).textContent = '✅';
+    }
+  });
+
+  // mark clicked
+  const clicked = document.getElementById(`opt-${qi}-${oi}`);
+  if (!isCorrect) {
+    clicked.classList.add('wrong');
+    document.getElementById(`ri-${qi}-${oi}`).textContent = '❌';
+  }
+}
+
+function resetOneQA(qi) {
+  const card = document.querySelector(`#qaopts-${qi}`).closest('.qa-card');
+  card.dataset.answered = "false";
+  const allOpts = document.querySelectorAll(`#qaopts-${qi} .qa-option`);
+  allOpts.forEach((el, idx) => {
+    el.classList.remove('disabled','correct','wrong');
+    document.getElementById(`ri-${qi}-${idx}`).textContent = '';
+  });
+}
+
+/* ══════════ PART 3 – STORY TOGGLE ══════════ */
+let storyOpen = false;
+function toggleStory() {
+  storyOpen = !storyOpen;
+  const el = document.getElementById('storyCollapse');
+  const btn = document.getElementById('btnStoryToggle');
+  el.classList.toggle('open', storyOpen);
+  btn.textContent = storyOpen ? '🙈 Hide' : '👁️ Show';
+}
+
+function playStory() {
+  playAudio("part3/1.wav", document.getElementById('btnStory'));
+}
+
+/* ══════════ PART 3 – STICK ══════════ */
+let dragging = null;
+
+function buildStick() {
+  const pool = document.getElementById('stickersPool');
+  const grid = document.getElementById('daysGrid');
+  pool.innerHTML = ''; grid.innerHTML = '';
+
+  // shuffle stickers display order for fun
+  const shuffled = [...stickDays].sort(() => Math.random() - .5);
+  shuffled.forEach(d => {
+    const s = document.createElement('div');
+    s.className = 'sticker';
+    s.textContent = d.injury;
+    s.draggable = true;
+    s.dataset.injury = d.injury;
+    s.addEventListener('dragstart', e => { dragging = s; e.dataTransfer.effectAllowed = 'move'; });
+    pool.appendChild(s);
+  });
+
+  stickDays.forEach((d, i) => {
+    const slot = document.createElement('div');
+    slot.className = 'day-slot';
+    slot.innerHTML = `
+      <span class="day-name">📅 ${d.day}</span>
+      <div class="day-drop" id="drop-${i}" data-correct="${d.injury}"
+        ondragover="ev(event)" ondragleave="dl(event)" ondrop="doDrop(event,${i})">
+        Drop here
+      </div>
+      <button class="btn-audio-sm" style="background:#fff3e0;color:#e65100;margin-left:auto;flex-shrink:0"
+        onclick="playAudio('${d.audio}',this)">🔊</button>`;
+    grid.appendChild(slot);
+  });
+}
+
+function ev(e){e.preventDefault();e.currentTarget.classList.add('drag-over');}
+function dl(e){e.currentTarget.classList.remove('drag-over');}
+
+function doDrop(e, i) {
+  e.preventDefault();
+  const target = document.getElementById('drop-'+i);
+  target.classList.remove('drag-over');
+  if (!dragging) return;
+  if (target.classList.contains('filled')) {
+    returnSticker(target.dataset.placed);
+    // reset color
+    target.style.background=''; target.style.borderColor=''; target.style.color='';
+  }
+  target.textContent = dragging.dataset.injury;
+  target.classList.add('filled');
+  target.dataset.placed = dragging.dataset.injury;
+  dragging.classList.add('used');
+  dragging = null;
+}
+
+function returnSticker(injury) {
+  document.querySelectorAll('#stickersPool .sticker').forEach(s => {
+    if (s.dataset.injury === injury) s.classList.remove('used');
+  });
+}
+
+function resetStick() {
+  document.querySelectorAll('.day-drop').forEach(d => {
+    d.textContent = 'Drop here';
+    d.classList.remove('filled');
+    d.style.background=''; d.style.borderColor=''; d.style.color='';
+    delete d.dataset.placed;
+  });
+  document.querySelectorAll('.sticker').forEach(s => s.classList.remove('used'));
+}
+
+function checkStick() {
+  let correct = 0, filled = 0;
+  document.querySelectorAll('.day-drop').forEach(d => {
+    if (d.classList.contains('filled')) {
+      filled++;
+      if (d.dataset.placed === d.dataset.correct) {
+        d.style.background='#e8f5e9'; d.style.borderColor='#43a047'; d.style.color='#1b5e20';
+        correct++;
+      } else {
+        d.style.background='#ffebee'; d.style.borderColor='#e53935'; d.style.color='#b71c1c';
+      }
+    }
+  });
+  if (filled === 0) { alert('💡 Kéo các nhãn vào ô trước nhé!'); return; }
+  if (correct === stickDays.length) alert('🎉 Xuất sắc! Đúng tất cả ' + stickDays.length + '/' + stickDays.length + '!');
+  else alert(`✅ Đúng ${correct}/${stickDays.length} – Thử lại nhé!`);
+}
+
+/* ══════════ INIT ══════════ */
+buildVocab();
+buildQA();
+buildStick();
+</script>
+</body>
+</html>
